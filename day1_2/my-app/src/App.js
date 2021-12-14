@@ -1,7 +1,8 @@
+import MyName from './MyName';
 
 function App() {
   return (
-    <h1>Cos tam</h1>
+    <MyName />
   );
 }
 
