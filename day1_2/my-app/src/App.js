@@ -1,8 +1,7 @@
 import { Wrapper } from './Wrapper';
 import { AboutMe } from './about-me/AboutMe';
-import { Game } from './Game';
-import { Users } from './Users';
-import { GameClass } from "./GameClass";
+import { Users } from './users/Users';
+import { Game, GameClass } from "./games";
 
 function App() {
     return (
