@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 export const Game = ({name}) => {
     const [points, setPoints] = useState(0);
@@ -10,6 +10,13 @@ export const Game = ({name}) => {
     const decrease = () => {
         setPoints(points - 5);
     }
+
+    useEffect(() => {
+        if (points >= 50) {
+            alert('Gratulacje wygrałeś w grę ' + name + '!');
+            setPoints(0);
+        }
+    })
 
     return <>
         <h3>Witam w grze {name}!</h3>
