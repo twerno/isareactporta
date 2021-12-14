@@ -1,5 +1,6 @@
 import MyName from "./MyName";
 import {Contact} from "./Contact";
+import {ContactStyled} from "./ContactStyled";
 import {MyFavouriteDishes} from "./MyFavouriteDishes";
 
 export const AboutMe = () => {
@@ -8,6 +9,11 @@ export const AboutMe = () => {
             <MyName name="Janusz" surname="Kowalski"/>
             <MyName name="Janusz"/>
             <Contact data={{
+                phone: '111 222 333',
+                address: {street: 'Słowackiego', city: 'Gdańsk', number: 37},
+                email: 'moj@mail.com'
+            }}/>
+            <ContactStyled data={{
                 phone: '111 222 333',
                 address: {street: 'Słowackiego', city: 'Gdańsk', number: 37},
                 email: 'moj@mail.com'
