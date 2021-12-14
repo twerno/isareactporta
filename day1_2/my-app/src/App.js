@@ -1,5 +1,5 @@
 import { Wrapper } from './Wrapper';
-import { AboutMe } from './AboutMe';
+import { AboutMe } from './about-me/AboutMe';
 
 function App() {
     return (
