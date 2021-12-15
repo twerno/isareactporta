@@ -1,8 +1,8 @@
 import {useContext} from 'react';
-import {LanguageContext} from "../App";
+import LanguageContext from "../LanguageContext";
 
 function MyName(props) {
-    const lang = useContext(LanguageContext);
+    const { lang } = useContext(LanguageContext);
 
     if (props.surname) {
         if (lang === 'pl') {

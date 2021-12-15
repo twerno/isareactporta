@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useContext} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,8 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import Icon from '@mui/material/Icon';
 import {NavLink} from 'react-router-dom';
 import './Navigation.css';
+import LanguageContext from "./LanguageContext";
 
-export default function Navigation({ setLang }) {
+export default function Navigation() {
+    const { setLang } = useContext(LanguageContext);
+
     return (
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
