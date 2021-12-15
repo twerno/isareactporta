@@ -1,4 +1,7 @@
 import {useState, useEffect} from 'react';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Icon from '@mui/material/Icon';
 
 export const Game = ({name}) => {
     const [points, setPoints] = useState(0);
@@ -19,14 +22,18 @@ export const Game = ({name}) => {
     })
 
     return <>
-        <h3>Witam w grze {name}!</h3>
-        <h4>
+        <Typography variant="h5">Witam w grze {name}!</Typography>
+        <Typography variant="h6">
             Twoje punkty to:
             <span style={{ color: points < 0 ? 'red' : 'inherit'}}> {points}</span>
-        </h4>
+        </Typography>
         <div>
-            <button onClick={increase}>+</button>
-            <button onClick={decrease}>-</button>
+            <Button variant="contained" onClick={increase}>
+                <Icon>add</Icon>
+            </Button>
+            <Button variant="contained" color="error" onClick={decrease}>
+                <Icon>remove</Icon>
+            </Button>
         </div>
     </>
 }
