@@ -1,9 +1,13 @@
-import React from 'react';
+import {Navigation} from './navigation';
+import {Content} from './content';
 
 function App() {
-  return (
-    <h1>Burgers App</h1>
-  );
+    return (
+        <>
+            <Navigation/>
+            <Content/>
+        </>
+    );
 }
 
 export default App;
