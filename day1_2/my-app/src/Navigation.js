@@ -8,7 +8,7 @@ import Icon from '@mui/material/Icon';
 import {NavLink} from 'react-router-dom';
 import './Navigation.css';
 
-export default function Navigation() {
+export default function Navigation({ setLang }) {
     return (
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
@@ -32,6 +32,8 @@ export default function Navigation() {
                             to="/forms">Forms</Button>
                     <Button color="inherit" component={NavLink} activeClassName="active-nav-link"
                             to="/users">Users</Button>
+                    <Button color="inherit" onClick={() => setLang('pl')}>PL</Button>
+                    <Button color="inherit" onClick={() => setLang('en')}>EN</Button>
                 </Toolbar>
             </AppBar>
         </Box>
