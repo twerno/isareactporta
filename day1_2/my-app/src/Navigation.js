@@ -2,10 +2,10 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Icon from '@mui/material/Icon';
+import { Link } from 'react-router-dom';
 
 export default function Navigation() {
     return (
@@ -21,11 +21,11 @@ export default function Navigation() {
                     >
                         <Icon>favorite</Icon>
                     </IconButton>
-                    <Button color="inherit">Home</Button>
-                    <Button color="inherit">About me</Button>
-                    <Button color="inherit">Games</Button>
-                    <Button color="inherit">Forms</Button>
-                    <Button color="inherit">Users</Button>
+                    <Button color="inherit" component={Link} to="/">Home</Button>
+                    <Button color="inherit" component={Link} to="/about-me">About me</Button>
+                    <Button color="inherit" component={Link} to="/games">Games</Button>
+                    <Button color="inherit" component={Link} to="/forms">Forms</Button>
+                    <Button color="inherit" component={Link} to="/users">Users</Button>
                 </Toolbar>
             </AppBar>
         </Box>
