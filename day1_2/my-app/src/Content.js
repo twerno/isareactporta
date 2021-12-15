@@ -4,6 +4,7 @@ import {Game, GameClass} from "./games";
 import {BetterForm, BoostedForm, Form} from "./forms";
 import {Users} from "./users/Users";
 import {UserDetails} from "./users/UserDetails";
+import {Sign} from "./sign/Sign";
 import {Wrapper} from "./Wrapper";
 
 export const Content = () => {
@@ -29,6 +30,9 @@ export const Content = () => {
             </Route>
             <Route path="/users/:id">
                 <UserDetails/>
+            </Route>
+            <Route path="/sign">
+                <Sign/>
             </Route>
         </Switch>
     </Wrapper>
