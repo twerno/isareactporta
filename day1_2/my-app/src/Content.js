@@ -3,6 +3,7 @@ import {AboutMe} from "./about-me/AboutMe";
 import {Game, GameClass} from "./games";
 import {BetterForm, BoostedForm, Form} from "./forms";
 import {Users} from "./users/Users";
+import {UserDetails} from "./users/UserDetails";
 import {Wrapper} from "./Wrapper";
 
 export const Content = () => {
@@ -23,8 +24,11 @@ export const Content = () => {
                 <BetterForm/>
                 <BoostedForm/>
             </Route>
-            <Route path="/users">
+            <Route exact path="/users">
                 <Users/>
+            </Route>
+            <Route path="/users/:id">
+                <UserDetails/>
             </Route>
         </Switch>
     </Wrapper>

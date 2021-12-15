@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import Button from '@mui/material/Button'
 import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
 import {User} from "./User";
 
 export const Users = () => {
@@ -19,9 +20,11 @@ export const Users = () => {
     return <>
         <Button onClick={history.goBack}>Go back</Button>
         <Table>
-            {users.map(user => {
-                return <User key={user.id} user={user}/>
-            })}
+            <TableBody>
+                {users.map(user => {
+                    return <User key={user.id} user={user}/>
+                })}
+            </TableBody>
         </Table>
     </>
 }
