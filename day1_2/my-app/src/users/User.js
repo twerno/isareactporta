@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 
@@ -11,7 +12,7 @@ export const User = ({ user }) => {
     }
 
     return <TableRow>
-        <TableCell>{user.name} works in {user.company.name}</TableCell>
+        <TableCell><Link to={`/users/${user.id}`}>{user.name}</Link> works in {user.company.name}</TableCell>
         <TableCell>{generatePhoneNumber()}</TableCell>
     </TableRow>
 }
