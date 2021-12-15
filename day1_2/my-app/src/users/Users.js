@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import Button from '@mui/material/Button'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -7,7 +7,7 @@ import {User} from "./User";
 
 export const Users = () => {
     const [users, setUsers] = useState([]);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -18,7 +18,7 @@ export const Users = () => {
     }, []);
 
     return <>
-        <Button onClick={history.goBack}>Go back</Button>
+        <Button onClick={() => navigate(-1)}>Go back</Button>
         <Table>
             <TableBody>
                 {users.map(user => {

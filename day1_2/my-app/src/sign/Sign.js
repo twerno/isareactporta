@@ -1,19 +1,19 @@
-import {Redirect, useHistory} from 'react-router-dom';
+import {Navigate, useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 
 export const Sign = () => {
     const [shouldRedirect, setShouldRedirect] = useState(false);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setShouldRedirect(true);
+        // setShouldRedirect(true);
         // Opcja z użyciem history :)
-        // history.push('/')
+        navigate('/');
     }
 
     if (shouldRedirect) {
-        return <Redirect to="/" />
+        return <Navigate to="/" />
     }
 
     return <form onSubmit={handleSubmit}>
