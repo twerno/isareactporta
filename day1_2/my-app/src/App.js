@@ -1,3 +1,4 @@
+import {Switch, Route} from 'react-router-dom';
 import {Wrapper} from './Wrapper';
 import {AboutMe} from './about-me/AboutMe';
 import {Users} from './users/Users';
@@ -10,13 +11,26 @@ function App() {
         <>
             <Navigation/>
             <Wrapper>
-                <Form/>
-                <BetterForm/>
-                <BoostedForm/>.
-                <AboutMe/>
-                <Game name="Witcher 3"/>
-                <GameClass name="Diablo 2"/>
-                <Users/>
+                <Switch>
+                    <Route exact path="/">
+                        <h1>Witaj na naszej stronie!</h1>
+                    </Route>
+                    <Route path="/about-me">
+                        <AboutMe/>
+                    </Route>
+                    <Route path="/games">
+                        <Game name="Witcher 3"/>
+                        <GameClass name="Diablo 2"/>
+                    </Route>
+                    <Route path="/forms">
+                        <Form/>
+                        <BetterForm/>
+                        <BoostedForm/>
+                    </Route>
+                    <Route path="/users">
+                        <Users/>
+                    </Route>
+                </Switch>
             </Wrapper>
         </>
     );
