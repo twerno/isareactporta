@@ -1,3 +1,7 @@
+import {PageWrapper} from "../../common/page-wrapper";
+
 export const Sign = () => {
-    return <h1>Sign</h1>
+    return <PageWrapper title="Sign">
+        <h1>Hello</h1>
+    </PageWrapper>
 }
