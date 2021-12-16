@@ -9,13 +9,28 @@ import {Burger} from "../../common/types";
 import {fetchBurgers as fetchBurgersService} from "../../services/fetch-burgers";
 import {AddBurgerForm} from "./add-burger-form";
 import {BurgerRow} from "./burger-row";
+import {EditBurgerRow} from "./edit-burger-row";
 
 export const Admin = () => {
+    const [editId, setEditId] = useState<string | null>(null);
     const [burgers, setBurgers] = useState<Burger[] | null>(null);
 
     const fetchBurgers = async () => {
         const data = await fetchBurgersService();
         setBurgers(data);
+    }
+
+    const enterEditMode = (editId: string) => {
+        setEditId(editId);
+    }
+
+    const exitEditMode = () => {
+        setEditId(null);
+    }
+
+    const handleOnSave = () => {
+        exitEditMode();
+        fetchBurgers();
     }
 
     useEffect(() => {
@@ -34,11 +49,22 @@ export const Admin = () => {
                 </TableHead>
                 <TableBody>
                     {burgers?.map(burger => {
-                        return <BurgerRow
-                            key={burger.id}
-                            burger={burger}
-                            onRemove={fetchBurgers}
-                        />
+                        return editId === burger.id
+                            ? (
+                                <EditBurgerRow
+                                    key={burger.id}
+                                    burger={burger}
+                                    onCancel={exitEditMode}
+                                    onSave={handleOnSave}
+                                />
+                            ) : (
+                                <BurgerRow
+                                    key={burger.id}
+                                    burger={burger}
+                                    onRemove={fetchBurgers}
+                                    onEdit={enterEditMode}
+                                />
+                            )
                     })}
                 </TableBody>
             </Table>
