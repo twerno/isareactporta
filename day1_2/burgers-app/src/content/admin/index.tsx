@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import {Burger} from "../../common/types";
 import {fetchBurgers as fetchBurgersService} from "../../services/fetch-burgers";
 import {AddBurgerForm} from "./add-burger-form";
+import {BurgerRow} from "./burger-row";
 
 export const Admin = () => {
     const [burgers, setBurgers] = useState<Burger[] | null>(null);
@@ -33,17 +34,15 @@ export const Admin = () => {
                 </TableHead>
                 <TableBody>
                     {burgers?.map(burger => {
-                        return (
-                            <TableRow key={burger.id}>
-                                <TableCell>{burger.name}</TableCell>
-                                <TableCell align="right">{burger.ingredients}</TableCell>
-                                <TableCell align="right">{burger.price}</TableCell>
-                            </TableRow>
-                        )
+                        return <BurgerRow
+                            key={burger.id}
+                            burger={burger}
+                            onRemove={fetchBurgers}
+                        />
                     })}
                 </TableBody>
             </Table>
-            <AddBurgerForm onAdd={fetchBurgers} />
+            <AddBurgerForm onAdd={fetchBurgers}/>
         </PageWrapper>
     )
 }
