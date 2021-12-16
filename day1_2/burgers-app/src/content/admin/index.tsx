@@ -1,12 +1,13 @@
-import {PageWrapper} from "../../common/page-wrapper";
-import {useEffect, useState} from "react";
-import {Burger} from "../../common/types";
-import {fetchBurgers} from "../../services/fetch-burgers";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
+import {PageWrapper} from "../../common/page-wrapper";
+import {useEffect, useState} from "react";
+import {Burger} from "../../common/types";
+import {fetchBurgers} from "../../services/fetch-burgers";
+import {AddBurgerForm} from "./add-burger-form";
 
 export const Admin = () => {
     const [burgers, setBurgers] = useState<Burger[] | null>(null);
@@ -40,6 +41,7 @@ export const Admin = () => {
                     })}
                 </TableBody>
             </Table>
+            <AddBurgerForm />
         </PageWrapper>
     )
 }
