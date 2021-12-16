@@ -22,7 +22,8 @@ const reducer = (state: State = 0, action: Action) => {
     }
 }
 
-const store = createStore(reducer);
+// @ts-ignore
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 // @ts-ignore
 window.store = store;
