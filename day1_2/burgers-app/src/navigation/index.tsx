@@ -5,8 +5,17 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Icon from '@mui/material/Icon';
+import {useUserContext} from "../services/user-context";
+import {getAuth, signOut} from 'firebase/auth';
 
 export const Navigation = () => {
+    const user = useUserContext();
+
+    const logOut = () => {
+        const auth = getAuth();
+        signOut(auth);
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -23,8 +32,14 @@ export const Navigation = () => {
                         <Icon>lunch_dining</Icon>
                     </IconButton>
                     <Button color="inherit" component={Link} to="/burgers">Burgers</Button>
-                    <Button color="inherit" component={Link} to="/admin">Admin</Button>
-                    <Button color="inherit" component={Link} to="/sign-in">Sign</Button>
+                    {
+                        user && <Button color="inherit" component={Link} to="/admin">Admin</Button>
+                    }
+                    {
+                        user
+                            ? <Button color="inherit" onClick={logOut}>Sign out</Button>
+                            : <Button color="inherit" component={Link} to="/sign-in">Sign in</Button>
+                    }
                 </Toolbar>
             </AppBar>
         </Box>

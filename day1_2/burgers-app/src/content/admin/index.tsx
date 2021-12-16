@@ -6,6 +6,7 @@ import TableBody from "@mui/material/TableBody";
 import {PageWrapper} from "../../common/page-wrapper";
 import {useEffect, useState} from "react";
 import {Burger} from "../../common/types";
+import {Auth} from "../../common/auth";
 import {fetchBurgers as fetchBurgersService} from "../../services/fetch-burgers";
 import {AddBurgerForm} from "./add-burger-form";
 import {BurgerRow} from "./burger-row";
@@ -38,37 +39,39 @@ export const Admin = () => {
     }, []);
 
     return (
-        <PageWrapper title="Admin">
-            <Table sx={{maxWidth: '75%'}}>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="right">Ingredients</TableCell>
-                        <TableCell align="right">Price</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {burgers?.map(burger => {
-                        return editId === burger.id
-                            ? (
-                                <EditBurgerRow
-                                    key={burger.id}
-                                    burger={burger}
-                                    onCancel={exitEditMode}
-                                    onSave={handleOnSave}
-                                />
-                            ) : (
-                                <BurgerRow
-                                    key={burger.id}
-                                    burger={burger}
-                                    onRemove={fetchBurgers}
-                                    onEdit={enterEditMode}
-                                />
-                            )
-                    })}
-                </TableBody>
-            </Table>
-            <AddBurgerForm onAdd={fetchBurgers}/>
-        </PageWrapper>
+        <Auth>
+            <PageWrapper title="Admin">
+                <Table sx={{maxWidth: '75%'}}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Name</TableCell>
+                            <TableCell align="right">Ingredients</TableCell>
+                            <TableCell align="right">Price</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {burgers?.map(burger => {
+                            return editId === burger.id
+                                ? (
+                                    <EditBurgerRow
+                                        key={burger.id}
+                                        burger={burger}
+                                        onCancel={exitEditMode}
+                                        onSave={handleOnSave}
+                                    />
+                                ) : (
+                                    <BurgerRow
+                                        key={burger.id}
+                                        burger={burger}
+                                        onRemove={fetchBurgers}
+                                        onEdit={enterEditMode}
+                                    />
+                                )
+                        })}
+                    </TableBody>
+                </Table>
+                <AddBurgerForm onAdd={fetchBurgers}/>
+            </PageWrapper>
+        </Auth>
     )
 }
