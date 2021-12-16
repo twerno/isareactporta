@@ -1,9 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
-import './index.css';
-import App from './App';
-
 type State = number;
 type Action = {
     type: string
@@ -24,12 +18,5 @@ const reducer = (state: State = 0, action: Action) => {
 
 const store = createStore(reducer);
 
-// @ts-ignore
-window.store = store;
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// ZWIEKSZ WARTOSC O 1
+store.dispatch({ type: 'INCREMENT' })
