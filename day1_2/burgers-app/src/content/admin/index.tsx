@@ -6,17 +6,19 @@ import TableBody from "@mui/material/TableBody";
 import {PageWrapper} from "../../common/page-wrapper";
 import {useEffect, useState} from "react";
 import {Burger} from "../../common/types";
-import {fetchBurgers} from "../../services/fetch-burgers";
+import {fetchBurgers as fetchBurgersService} from "../../services/fetch-burgers";
 import {AddBurgerForm} from "./add-burger-form";
 
 export const Admin = () => {
     const [burgers, setBurgers] = useState<Burger[] | null>(null);
 
+    const fetchBurgers = async () => {
+        const data = await fetchBurgersService();
+        setBurgers(data);
+    }
+
     useEffect(() => {
-        fetchBurgers()
-            .then(data => {
-                setBurgers(data);
-            })
+        fetchBurgers();
     }, []);
 
     return (
@@ -41,7 +43,7 @@ export const Admin = () => {
                     })}
                 </TableBody>
             </Table>
-            <AddBurgerForm />
+            <AddBurgerForm onAdd={fetchBurgers} />
         </PageWrapper>
     )
 }
