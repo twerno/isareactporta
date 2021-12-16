@@ -8,10 +8,9 @@ interface BurgersResponse {
     }
 }
 
-export const fetchBurgers = (): Promise<Burger[]> => {
-    return fetch('https://rest-api-b6410.firebaseio.com/burgers.json')
-        .then(r => r.json())
-        .then((data: BurgersResponse) => {
-            return Object.keys(data).map(key => ({id: key, ...data[key]}));
-        })
+export const fetchBurgers = async (): Promise<Burger[]> => {
+    const response = await fetch('https://rest-api-b6410.firebaseio.com/burgers.json');
+    const data: BurgersResponse = await response.json();
+
+    return Object.keys(data).map(key => ({id: key, ...data[key]}));
 }
