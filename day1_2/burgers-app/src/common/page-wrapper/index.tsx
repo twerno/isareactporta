@@ -1,6 +1,5 @@
 import {FC} from "react";
 import Typography from "@mui/material/Typography";
-// @ts-ignore
 import styled from 'styled-components';
 
 interface Props {
