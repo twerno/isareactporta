@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
@@ -32,7 +33,9 @@ export const Burgers = () => {
                     {burgers?.map(burger => {
                         return (
                             <TableRow key={burger.id}>
-                                <TableCell>{burger.name}</TableCell>
+                                <TableCell>
+                                    <Link to={`/burgers/${burger.id}`}>{burger.name}</Link>
+                                </TableCell>
                                 <TableCell align="right">{burger.ingredients}</TableCell>
                                 <TableCell align="right">{burger.price}</TableCell>
                             </TableRow>
